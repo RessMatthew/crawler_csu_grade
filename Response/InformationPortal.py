@@ -1,7 +1,7 @@
 import requests
 
 # 获取登入信息门户响应
-def getInformationPortalResponse():
+def getInformationPortalResponseWithEdge():
     cookies = {
         'route': 'd9d8c9a003742ff7ae0fa95dc3169d6d',
         'JSESSIONID': 'C3104C299DF3F0C979F0377564F80F98',
@@ -54,3 +54,27 @@ def getInformationPortalResponse():
 
     return response
 
+
+def getInformationPortalResponseWithChrome():
+    cookies = {
+        '_ga': 'GA1.3.2004897597.1655054997',
+        'BIGipServerpool_server_202.197.71.101': '2461182144.39455.0000',
+        'JSESSIONID': 'DA307E9FC8C72B3FA5353762434F69A4',
+    }
+
+    headers = {
+        'Proxy-Connection': 'keep-alive',
+        'Pragma': 'no-cache',
+        'Cache-Control': 'no-cache',
+        'Upgrade-Insecure-Requests': '1',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'Referer': 'http://my.csu.edu.cn/;jsessionid=DA307E9FC8C72B3FA5353762434F69A4',
+        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+        # Requests sorts cookies= alphabetically
+        # 'Cookie': '_ga=GA1.3.2004897597.1655054997; BIGipServerpool_server_202.197.71.101=2461182144.39455.0000; JSESSIONID=DA307E9FC8C72B3FA5353762434F69A4',
+    }
+
+    response = requests.get('http://my.csu.edu.cn/portal/index.jsp', cookies=cookies, headers=headers, verify=False)
+
+    return response
